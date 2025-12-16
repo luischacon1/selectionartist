@@ -1,0 +1,260 @@
+/* ========================================
+   ARTIST VAULT
+   Ultra-minimal luxury experience
+   ======================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Archivo', -apple-system, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   The Vault
+   ======================================== */
+
+.vault {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vault__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: reveal 2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.8em;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.35em;
+  }
+}
+
+/* ========================================
+   Logo Typography
+   ======================================== */
+
+.vault__logo {
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  font-weight: 200;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-right: -0.35em;
+  margin-bottom: 3rem;
+}
+
+/* ========================================
+   Tagline
+   ======================================== */
+
+.vault__tagline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 5rem;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   Access Gate (Password)
+   ======================================== */
+
+.vault__gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 1.8s;
+  opacity: 0;
+}
+
+.vault__gate.is-hidden {
+  display: none;
+}
+
+.vault__code {
+  position: relative;
+}
+
+.vault__input {
+  width: 140px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Archivo', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: 0.5em;
+  text-align: center;
+  color: #ffffff;
+  padding: 0.5rem 0;
+  caret-color: rgba(255, 255, 255, 0.3);
+}
+
+.vault__input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.3em;
+}
+
+.vault__line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.4s ease;
+}
+
+.vault__input:focus ~ .vault__line {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.vault__hint {
+  font-size: 0.6rem;
+  font-weight: 200;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+/* Error State */
+.vault__gate.is-error .vault__line {
+  background: rgba(255, 80, 80, 0.6);
+  animation: pulse 0.6s ease;
+}
+
+.vault__gate.is-error .vault__input {
+  animation: shake 0.5s ease;
+}
+
+.vault__gate.is-error .vault__hint {
+  color: rgba(255, 80, 80, 0.5);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ========================================
+   Access Granted (Phone)
+   ======================================== */
+
+.vault__access {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+}
+
+.vault__access.is-visible {
+  display: flex;
+  animation: unlockReveal 1.2s ease forwards;
+}
+
+@keyframes unlockReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.vault__label {
+  font-size: 0.6rem;
+  font-weight: 200;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.vault__phone {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 200;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.vault__phone:hover {
+  letter-spacing: 0.25em;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 600px) {
+  .vault__logo {
+    letter-spacing: 0.25em;
+    margin-right: -0.25em;
+  }
+  
+  .vault__tagline {
+    letter-spacing: 0.15em;
+    padding: 0 2rem;
+  }
+}

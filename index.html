@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selection Artist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <main class="vault">
+      <div class="vault__content">
+        <h1 class="vault__logo">SELECTION ARTIST</h1>
+        <p class="vault__tagline">
+          <span>Sin límites.</span>
+          <span>Bienvenido al Vault.</span>
+        </p>
+        
+        <!-- Access Gate -->
+        <div class="vault__gate" id="gate">
+          <div class="vault__code">
+            <input 
+              type="password" 
+              id="password" 
+              class="vault__input" 
+              maxlength="4" 
+              placeholder="• • • •"
+              autocomplete="off"
+            />
+            <div class="vault__line"></div>
+          </div>
+          <span class="vault__hint">Enter code</span>
+        </div>
+
+        <!-- Access Granted -->
+        <div class="vault__access" id="access">
+          <span class="vault__label">Private Line</span>
+          <a href="tel:+34623753992" class="vault__phone">+34 623 753 992</a>
+        </div>
+
+      </div>
+    </main>
+    <script type="module" src="/scripts/main.js"></script>
+  </body>
+</html>

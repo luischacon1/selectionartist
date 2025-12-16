@@ -1,0 +1,14 @@
+{
+  "name": "artist-vault",
+  "version": "1.0.0",
+  "description": "Artist Vault - Conceptual Landing Page",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
+
