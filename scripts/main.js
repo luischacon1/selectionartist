@@ -35,16 +35,22 @@ passwordInput.addEventListener('input', (e) => {
   }
 });
 
-// Unlock - redirect to WhatsApp
+// Unlock - elegant fade out then redirect to WhatsApp
 function unlockVault() {
-  gate.style.transition = 'opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease';
+  // First fade out the gate
+  gate.style.transition = 'opacity 0.4s ease';
   gate.style.opacity = '0';
-  gate.style.transform = 'translateY(-10px)';
-  gate.style.filter = 'blur(5px)';
   
+  // Then fade out the entire page
+  setTimeout(() => {
+    document.body.style.transition = 'opacity 1.2s ease-out';
+    document.body.style.opacity = '0';
+  }, 200);
+  
+  // Redirect at the end of the fade
   setTimeout(() => {
     window.location.href = 'https://wa.link/ajmv7u';
-  }, 600);
+  }, 1400);
 }
 
 // Deny - shake animation
