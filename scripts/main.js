@@ -35,7 +35,7 @@ passwordInput.addEventListener('input', (e) => {
   }
 });
 
-// Unlock - show phone number
+// Unlock - redirect to WhatsApp
 function unlockVault() {
   gate.style.transition = 'opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease';
   gate.style.opacity = '0';
@@ -43,8 +43,7 @@ function unlockVault() {
   gate.style.filter = 'blur(5px)';
   
   setTimeout(() => {
-    gate.classList.add('is-hidden');
-    access.classList.add('is-visible');
+    window.location.href = 'https://wa.link/ajmv7u';
   }, 600);
 }
 
